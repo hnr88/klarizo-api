@@ -1,0 +1,67 @@
+services:
+  klarizo-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: klarizo-api:latest
+    container_name: klarizo-api
+    restart: always
+    environment:
+      # Server (internal defaults)
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      PORT: 1337
+      # Strapi secrets
+      APP_KEYS: ${APP_KEYS:-toBeModified1,toBeModified2}
+      API_TOKEN_SALT: ${API_TOKEN_SALT:-tobemodified}
+      ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET:-tobemodified}
+      TRANSFER_TOKEN_SALT: ${TRANSFER_TOKEN_SALT:-tobemodified}
+      JWT_SECRET: ${JWT_SECRET:-tobemodified}
+      ENCRYPTION_KEY: ${ENCRYPTION_KEY:-tobemodified}
+      # Database (PostgreSQL)
+      DATABASE_CLIENT: ${DATABASE_CLIENT:-postgres}
+      DATABASE_HOST: ${DATABASE_HOST:-localhost}
+      DATABASE_PORT: ${DATABASE_PORT:-5432}
+      DATABASE_NAME: ${DATABASE_NAME:-klarizo}
+      DATABASE_USERNAME: ${DATABASE_USERNAME:-klarizo}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD:-klarizo}
+      DATABASE_SSL: ${DATABASE_SSL:-false}
+      DATABASE_POOL_MIN: ${DATABASE_POOL_MIN:-2}
+      DATABASE_POOL_MAX: ${DATABASE_POOL_MAX:-10}
+      # Redis (BullMQ)
+      REDIS_HOST: ${REDIS_HOST:-localhost}
+      REDIS_PORT: ${REDIS_PORT:-6379}
+      REDIS_PASSWORD: ${REDIS_PASSWORD:-}
+      REDIS_TLS: ${REDIS_TLS:-false}
+      # Cloudflare R2
+      R2_ACCOUNT_ID: ${R2_ACCOUNT_ID:-}
+      R2_ACCESS_KEY_ID: ${R2_ACCESS_KEY_ID:-}
+      R2_SECRET_ACCESS_KEY: ${R2_SECRET_ACCESS_KEY:-}
+      R2_BUCKET_NAME: ${R2_BUCKET_NAME:-klarizo}
+      R2_PUBLIC_URL: ${R2_PUBLIC_URL:-}
+      # Email (SMTP)
+      SMTP_HOST: ${SMTP_HOST:-smtp.gmail.com}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_USERNAME: ${SMTP_USERNAME:-}
+      SMTP_PASSWORD: ${SMTP_PASSWORD:-}
+      SMTP_FROM_EMAIL: ${SMTP_FROM_EMAIL:-}
+      SMTP_FROM_NAME: ${SMTP_FROM_NAME:-Klarizo}
+      ADMIN_EMAIL: ${ADMIN_EMAIL:-}
+      # Feature flags
+      WEBHOOKS_POPULATE_RELATIONS: ${WEBHOOKS_POPULATE_RELATIONS:-false}
+    ports:
+      # External:Internal - change external port as needed
+      - "${API_PORT:-1398}:1337"
+    volumes:
+      - uploads:/app/public/uploads
+    networks:
+      - coolify
+
+volumes:
+  uploads:
+    driver: local
+
+networks:
+  coolify:
+    external: true
+    name: coolify
