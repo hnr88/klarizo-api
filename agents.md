@@ -16,6 +16,10 @@ Quick reference for AI agents available in the klarizo-api backend.
 | **Plugin Specialist** | Custom plugin development | `.claude/agents/plugin-specialist.md` |
 | **Strapi Entity Manager** | Create/update entities via API | `.claude/agents/strapi-entity-manager.md` |
 | **Strapi Doctor** | Troubleshooting & debugging | `.claude/agents/strapi-doctor.md` |
+| **Redis BullMQ Expert** | Job queues & background workers | `.claude/agents/redis-bullmq-expert.md` |
+| **Cloudflare R2 Expert** | Object storage & file uploads | `.claude/agents/cloudflare-r2-expert.md` |
+| **Backend Compliance Checker** | Verify code follows Strapi v5 patterns | `.claude/agents/backend-compliance-checker.md` |
+| **API Documenter** | Auto-generate API documentation | `.claude/agents/api-documenter.md` |
 
 ---
 
@@ -76,6 +80,37 @@ Quick reference for AI agents available in the klarizo-api backend.
 - Configuration problems
 - Unexpected behavior
 
+### Redis BullMQ Expert
+**Use when:**
+- Setting up job queues
+- Creating background workers
+- Implementing scheduled tasks
+- Handling async operations
+- Managing job retries and failures
+
+### Cloudflare R2 Expert
+**Use when:**
+- Uploading files to R2
+- Generating presigned URLs
+- Managing stored objects
+- Handling file downloads
+- Setting up storage infrastructure
+
+### Backend Compliance Checker
+**Use when:** (Proactive - run after code changes)
+- Creating new controllers
+- Modifying existing controllers
+- Adding new routes
+- Creating services
+- Adding lifecycle hooks
+
+### API Documenter
+**Use when:** (Proactive - run after new endpoints)
+- Creating new controller actions
+- Adding new routes
+- Modifying endpoint behavior
+- Changing request/response schemas
+
 ---
 
 ## Available Commands
@@ -89,6 +124,7 @@ Quick reference for AI agents available in the klarizo-api backend.
 | `/generate-service` | Generate service |
 | `/add-route` | Add custom routes |
 | `/add-lifecycle` | Add lifecycle hooks |
+| `/document-endpoint` | Document API endpoint |
 
 ---
 
