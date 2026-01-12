@@ -55,13 +55,13 @@ services:
     volumes:
       - uploads:/app/public/uploads
     networks:
-      - klarizo
+      - coolify
 
 volumes:
   uploads:
     driver: local
 
 networks:
-  klarizo:
+  coolify:
     external: true
-    name: klarizo
+    name: coolify
